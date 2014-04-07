@@ -19,7 +19,6 @@
     if (!sharedInstance) {
         sharedInstance = [[super allocWithZone:nil] initPrivado];
     }
-    NSLog(@"Log");
     return sharedInstance;
 }
 
@@ -27,6 +26,7 @@
     self = [super init];
     if(self) {
         // TODO recuperar as receitas do arquivo
+        
     }
     return self;
 }

@@ -22,6 +22,7 @@
 		2752EA9718E8DA81001EF848 /* ReceitaStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752EA9618E8DA81001EF848 /* ReceitaStore.m */; };
 		2752EA9A18E8DB92001EF848 /* Receita.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752EA9918E8DB92001EF848 /* Receita.m */; };
 		2752EA9D18E8DC9F001EF848 /* ReceitaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752EA9C18E8DC9F001EF848 /* ReceitaViewController.m */; };
+		2B3C951618F328B000F7C286 /* Ingrediente.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C951518F328B000F7C286 /* Ingrediente.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		2752EA9918E8DB92001EF848 /* Receita.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Receita.m; sourceTree = "<group>"; };
 		2752EA9B18E8DC9F001EF848 /* ReceitaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceitaViewController.h; sourceTree = "<group>"; };
 		2752EA9C18E8DC9F001EF848 /* ReceitaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceitaViewController.m; sourceTree = "<group>"; };
+		2B3C951418F328B000F7C286 /* Ingrediente.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ingrediente.h; sourceTree = "<group>"; };
+		2B3C951518F328B000F7C286 /* Ingrediente.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ingrediente.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				2752EA9918E8DB92001EF848 /* Receita.m */,
 				2752EA9B18E8DC9F001EF848 /* ReceitaViewController.h */,
 				2752EA9C18E8DC9F001EF848 /* ReceitaViewController.m */,
+				2B3C951418F328B000F7C286 /* Ingrediente.h */,
+				2B3C951518F328B000F7C286 /* Ingrediente.m */,
 			);
 			path = Receitas;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3C951618F328B000F7C286 /* Ingrediente.m in Sources */,
 				2752EA7718E8DA1A001EF848 /* MackenzieAppDelegate.m in Sources */,
 				2752EA9D18E8DC9F001EF848 /* ReceitaViewController.m in Sources */,
 				2752EA9A18E8DB92001EF848 /* Receita.m in Sources */,
@@ -458,6 +464,7 @@
 				2752EA9118E8DA1A001EF848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2752EA9218E8DA1A001EF848 /* Build configuration list for PBXNativeTarget "ReceitasTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +473,7 @@
 				2752EA9418E8DA1A001EF848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

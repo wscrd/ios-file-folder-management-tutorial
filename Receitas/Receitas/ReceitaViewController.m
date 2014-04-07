@@ -31,6 +31,7 @@
 }
 
 - (void) viewDidLoad {
+    
     [super viewDidLoad];
     //cria animacao para mudar receitas
     transition = [CATransition animation];
