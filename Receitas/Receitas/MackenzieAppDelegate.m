@@ -51,9 +51,11 @@
     return YES;
 }
 
-- (NSString *) caminhoDoArquivo () {
++ (NSURL *) caminhoDoArquivo{
     NSFileManager *manager = [[NSFileManager alloc] init];
-    return nil;
+    NSURL *path = [[manager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] objectAtIndex:0];
+    [path URLByAppendingPathComponent:@"receitas.archive"];
+    return path;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

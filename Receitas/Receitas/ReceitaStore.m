@@ -7,12 +7,24 @@
 //
 
 #import "ReceitaStore.h"
+#import "MackenzieAppDelegate.h"
 
 @implementation ReceitaStore {
-    NSArray *receitas;
+    NSMutableArray *receitas;
     NSInteger current;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        receitas = [aDecoder decodeObjectForKey:@"receitas"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:receitas forKey:@"receitas"];
+}
 + (ReceitaStore *)sharedInstance
 {
     static ReceitaStore *sharedInstance = nil;
@@ -26,7 +38,11 @@
     self = [super init];
     if(self) {
         // TODO recuperar as receitas do arquivo
-        
+        NSURL *caminho = [MackenzieAppDelegate caminhoDoArquivo];
+        receitas = [NSKeyedUnarchiver unarchiveObjectWithFile:[caminho path]];
+        if (!receitas) {
+            receitas = [[NSMutableArray alloc] init];
+        }
     }
     return self;
 }

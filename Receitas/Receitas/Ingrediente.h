@@ -10,10 +10,12 @@
 
 @interface Ingrediente : NSObject <NSCoding> {
     float quantidade;
+    NSString *unidade;
     NSString *nome;
 }
 
 @property NSString *nome;
 @property float quantidade;
+@property NSString *unidade;
 
 @end

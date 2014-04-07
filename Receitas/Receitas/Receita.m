@@ -10,10 +10,7 @@
 
 @implementation Receita
 
-- (id) init {
-    self = [super init];
-    if (self) {
-    }
-    return self;
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject: forKey:<#(NSString *)#>]
 }
 @end

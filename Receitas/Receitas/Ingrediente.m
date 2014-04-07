@@ -12,6 +12,7 @@
 
 @synthesize nome;
 @synthesize quantidade;
+@synthesize unidade;
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
@@ -19,12 +20,14 @@
     if (self) {
         nome = [aDecoder decodeObjectForKey:@"nome"];
         quantidade = [aDecoder decodeFloatForKey:@"quantidade"];
+        unidade = [aDecoder decodeObjectForKey:@"unidade"];
     }
     return self;
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:nome forKey:@"nome"];
     [aCoder encodeFloat:quantidade forKey:@"quantidade"];
+    [aCoder encodeObject:unidade forKey:@"unidade"];
 }
 
 @end

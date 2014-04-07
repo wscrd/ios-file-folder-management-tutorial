@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Receita.h"
 
-@interface ReceitaStore : NSObject
+@interface ReceitaStore : NSObject <NSCoding>
 
 + (ReceitaStore *)sharedInstance;
 
