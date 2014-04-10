@@ -10,7 +10,20 @@
 
 @implementation Receita
 
+@synthesize passos;
+@synthesize ingredientes;
+
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject: forKey:<#(NSString *)#>]
+    [aCoder encodeObject:passos forKey:@"passos"];
+    [aCoder encodeObject:ingredientes forKey:@"ingredientes"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        passos = [aDecoder decodeObjectForKey:@"passos"];
+        ingredientes = (NSMutableArray *)[aDecoder decodeObjectForKey:@"ingredientes"];
+    }
+    return self;
 }
 @end

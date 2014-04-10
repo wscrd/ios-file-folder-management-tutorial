@@ -13,11 +13,11 @@
 
 {
     NSString *passos;
-    NSArray *ingredientes;
+    NSMutableArray *ingredientes;
     
 }
 
 @property NSString *passos;
-@property NSArray *ingredientes;
+@property NSMutableArray *ingredientes;
 
 @end

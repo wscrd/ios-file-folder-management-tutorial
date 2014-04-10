@@ -17,13 +17,13 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        receitas = [aDecoder decodeObjectForKey:@"receitas"];
+        receitas = (NSMutableArray *)[aDecoder decodeObjectForKey:@"receitas"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:receitas forKey:@"receitas"];
+    [aCoder encodeObject:(NSArray *)receitas forKey:@"receitas"];
 }
 + (ReceitaStore *)sharedInstance
 {
@@ -68,6 +68,9 @@
 
 -(void)addReceita:(Receita*)novaReceita {
     // TODO implementar este metodo -> adicionar no array e no arquivo!!!
+    [receitas addObject:novaReceita];
+    NSURL *caminho = [MackenzieAppDelegate caminhoDoArquivo];
+    [NSKeyedArchiver archiveRootObject:receitas toFile:[caminho path]];
 }
 
 
