@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Vinicius Miana. All rights reserved.
 //
 
+#import "NovaReceitaViewController.h"
 #import "ReceitaViewController.h"
 #import "ReceitaStore.h"
+
 
 @interface ReceitaViewController () {
     
@@ -42,6 +44,11 @@
     int width = self.view.bounds.size.width;
     
     // TODO acertar layout e pegar dados da receita atual
+    UIButton *novaReceita = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    UIButton *b =[[UIButton alloc] initWithFrame:CGRectMake(width * 0.80, height*0.08, 50, 50)];
+    [b addTarget:self action:@selector(adicionar:) forControlEvents:UIControlEventTouchUpInside];
+    [b setBackgroundColor:[UIColor colorWithRed:0.6 green:0.0 blue:0.6 alpha:1.0]];
+    [self.view addSubview:b];
     nome = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width/2, height*.2)];
     nome.text = @"Pegar nome da receita atual";
     nome.textAlignment = NSTextAlignmentCenter;
@@ -108,7 +115,12 @@
     // TODO atualizar a view com a receita atual
 }
 
-
+-(IBAction) adicionar: (id) sender {
+    NSLog(@"Pressionado");
+    NovaReceitaViewController *nr = [[NovaReceitaViewController alloc] initWithNibName:@"NovaReceitaView" bundle:[NSBundle mainBundle]];
+    [self presentViewController:nr animated:YES completion:nil];
+    
+}
 
 
 

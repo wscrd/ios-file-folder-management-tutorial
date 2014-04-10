@@ -43,6 +43,7 @@
         if (!receitas) {
             receitas = [[NSMutableArray alloc] init];
         }
+        current = 0;
     }
     return self;
 }
@@ -70,7 +71,8 @@
     // TODO implementar este metodo -> adicionar no array e no arquivo!!!
     [receitas addObject:novaReceita];
     NSURL *caminho = [MackenzieAppDelegate caminhoDoArquivo];
-    [NSKeyedArchiver archiveRootObject:receitas toFile:[caminho path]];
+    [receitas addObject:novaReceita];
+    [NSKeyedArchiver archiveRootObject:(NSArray *)receitas toFile:[caminho path]];
 }
 
 
