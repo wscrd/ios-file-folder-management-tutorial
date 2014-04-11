@@ -18,4 +18,5 @@
 @property float quantidade;
 @property NSString *unidade;
 
+- (id)initWithNome:(NSString *) ingrediente quantidade:(float) qte eUnidade:(NSString *) und;
 @end

@@ -30,4 +30,13 @@
     [aCoder encodeObject:unidade forKey:@"unidade"];
 }
 
+- (id)initWithNome:(NSString *) ingrediente quantidade:(float) qte eUnidade:(NSString *) und{
+    if (self = [super init]) {
+        nome = ingrediente;
+        quantidade = qte;
+        unidade = und;
+    }
+    return self;
+}
+
 @end

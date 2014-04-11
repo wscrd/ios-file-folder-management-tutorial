@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NovaReceitaViewController : UIViewController
+@interface NovaReceitaViewController : UIViewController <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *botaoSalvar;
 @property (weak, nonatomic) IBOutlet UITextField *campoNome;
 @property (weak, nonatomic) IBOutlet UITextField *ingrediente;
 @property (weak, nonatomic) IBOutlet UITextField *unidade;
 @property (weak, nonatomic) IBOutlet UITextField *quantidade;
 - (IBAction)adicionarIngrediente:(id)sender;
+- (IBAction)voltar:(id)sender;
+- (IBAction)salvar:(id)sender;
 
 @end

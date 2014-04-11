@@ -24,8 +24,12 @@
     self.window.rootViewController = self.navigationController; 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    NSString *dominio = [[NSBundle mainBundle] bundleIdentifier];
     
-    
+    NSUserDefaults *padrao = [NSUserDefaults standardUserDefaults];
+
+    NSLog(@"%@", [padrao arrayForKey:@"i"]);
+    //[padrao removePersistentDomainForName:dominio];
     /*NSFileManager *fileManager = [ [NSFileManager alloc ] init ] ;
     NSArray *urls = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
     for(int i = 0; i < [ urls count ] ; i++ ) {

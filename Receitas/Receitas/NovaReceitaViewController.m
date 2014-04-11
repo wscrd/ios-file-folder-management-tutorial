@@ -8,8 +8,14 @@
 
 #import "NovaReceitaViewController.h"
 #import "Receita.h"
+#import "Ingrediente.h"
 
-@interface NovaReceitaViewController ()
+@interface NovaReceitaViewController () {
+    NSMutableArray *igd;
+    NSMutableArray *qte;
+    NSMutableArray *u;
+    //Usar NSDictionary para guardar estes vetores
+}
 
 @end
 
@@ -20,15 +26,28 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-    
     }
     return self;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    igd = [[NSMutableArray alloc] init];
+    qte = [[NSMutableArray alloc] init];
+    u   = [[NSMutableArray alloc] init];
+
+    _campoNome.delegate =self;
+    _quantidade.delegate = self;
+    _unidade.delegate = self;
+    _ingrediente.delegate = self;
+    
     // Do any additional setup after loading the view.
+    [_botaoSalvar setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,18 +67,39 @@
 }
 */
 
+
 - (IBAction)adicionarIngrediente:(id)sender {
     if (_campoNome.text.length > 0
         && _ingrediente.text.length >0
         && _unidade.text.length > 0
         && _quantidade.text.length > 0) {
-        NSUserDefaults *padrao = [NSUserDefaults standardUserDefaults];
-        Receita *r = [[Receita alloc] init];
-        [r setPassos:@""];
-        NSLog(@"%@", _campoNome.text);
+        
+        [igd addObject:_ingrediente.text];
+        [u addObject:_unidade.text];
+        [qte addObject:[NSNumber numberWithInt:[_quantidade.text integerValue] ]];
+        [_botaoSalvar setHidden:NO];
+        
     }
     else {
         NSLog(@"Sem Nome/Ingrediente/Unidade/Quantidade");
     }
+}
+
+- (IBAction)voltar:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)salvar:(id)sender {
+    NSLog(@"botao Salvar");
+    NSUserDefaults *padrao = [NSUserDefaults standardUserDefaults];
+    [padrao setObject:_campoNome.text forKey:@"nome"];
+    [padrao setObject:(NSArray *)igd forKey:@"i"];
+    [padrao synchronize];
+    [padrao setObject:u forKey:@"unidade"];
+    [padrao setObject:qte forKey:@"quantidade"];
+    [_botaoSalvar setHidden:YES];
+    _campoNome.text = @"";
+    _unidade.text = @"";
+    _quantidade.text = @"";
 }
 @end

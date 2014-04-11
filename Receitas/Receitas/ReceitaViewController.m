@@ -45,10 +45,11 @@
     
     // TODO acertar layout e pegar dados da receita atual
     UIButton *novaReceita = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    UIButton *b =[[UIButton alloc] initWithFrame:CGRectMake(width * 0.80, height*0.08, 50, 50)];
-    [b addTarget:self action:@selector(adicionar:) forControlEvents:UIControlEventTouchUpInside];
-    [b setBackgroundColor:[UIColor colorWithRed:0.6 green:0.0 blue:0.6 alpha:1.0]];
-    [self.view addSubview:b];
+    novaReceita.frame = CGRectMake(width*0.8, height*0.08, 50, 50);
+    //UIButton *b =[[UIButton alloc] initWithFrame:CGRectMake(width * 0.80, height*0.08, 50, 50)];
+    [novaReceita addTarget:self action:@selector(adicionar:) forControlEvents:UIControlEventTouchUpInside];
+    //[b setBackgroundColor:[UIColor colorWithRed:0.6 green:0.0 blue:0.6 alpha:1.0]];
+    [self.view addSubview:novaReceita];
     nome = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width/2, height*.2)];
     nome.text = @"Pegar nome da receita atual";
     nome.textAlignment = NSTextAlignmentCenter;
