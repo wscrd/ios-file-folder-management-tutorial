@@ -9,11 +9,10 @@
 #import "NovaReceitaViewController.h"
 #import "Receita.h"
 #import "Ingrediente.h"
-
+#import "ReceitaStore.h"
+#import "ReceitaViewController.h"
 @interface NovaReceitaViewController () {
     NSMutableArray *igd;
-    NSMutableArray *qte;
-    NSMutableArray *u;
     //Usar NSDictionary para guardar estes vetores
 }
 
@@ -38,8 +37,7 @@
 {
     [super viewDidLoad];
     igd = [[NSMutableArray alloc] init];
-    qte = [[NSMutableArray alloc] init];
-    u   = [[NSMutableArray alloc] init];
+
 
     _campoNome.delegate =self;
     _quantidade.delegate = self;
@@ -71,12 +69,10 @@
 - (IBAction)adicionarIngrediente:(id)sender {
     if (_campoNome.text.length > 0
         && _ingrediente.text.length >0
-        && _unidade.text.length > 0
         && _quantidade.text.length > 0) {
         
-        [igd addObject:_ingrediente.text];
-        [u addObject:_unidade.text];
-        [qte addObject:[NSNumber numberWithInt:[_quantidade.text integerValue] ]];
+        Ingrediente *aux = [[Ingrediente alloc] initWithNome:_campoNome.text quantidade:[_quantidade.text floatValue] eUnidade:_unidade.text];
+        [igd addObject:aux];
         [_botaoSalvar setHidden:NO];
         
     }
@@ -91,15 +87,13 @@
 
 - (IBAction)salvar:(id)sender {
     NSLog(@"botao Salvar");
-    NSUserDefaults *padrao = [NSUserDefaults standardUserDefaults];
-    [padrao setObject:_campoNome.text forKey:@"nome"];
-    [padrao setObject:(NSArray *)igd forKey:@"i"];
-    [padrao synchronize];
-    [padrao setObject:u forKey:@"unidade"];
-    [padrao setObject:qte forKey:@"quantidade"];
     [_botaoSalvar setHidden:YES];
-    _campoNome.text = @"";
+    
+    Receita *r = [[Receita alloc] initWithNome:_campoNome.text passos:@"" eIngredientes:igd];
     _unidade.text = @"";
     _quantidade.text = @"";
+    [[ReceitaStore sharedInstance] addReceita:r];
+    _campoNome.text = @"";
+    
 }
 @end

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Receita.h"
 
-@interface ReceitaStore : NSObject <NSCoding>
+@interface ReceitaStore : NSObject
 
 + (ReceitaStore *)sharedInstance;
 
 -(Receita *)next;
 -(Receita *)previous;
+-(Receita *)atual;
 -(void)addReceita:(Receita*)novaReceita;
 
 @end

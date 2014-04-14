@@ -8,11 +8,17 @@
 
 #import "MackenzieAppDelegate.h"
 #import "ReceitaViewController.h"
+#import "ReceitaStore.h"
+#import "Receita.h"
 
 @implementation MackenzieAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(NSTemporaryDirectory());
+    //Receita *r = [[Receita alloc] init];
+    //r.nome = @"Bolo de abacaxi";
+    //[[ReceitaStore sharedInstance] addReceita:r];
     ReceitaViewController *viewController = [[ReceitaViewController alloc]
                                             initWithNibName:nil
                                             bundle:nil];
@@ -23,12 +29,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController; 
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    NSString *dominio = [[NSBundle mainBundle] bundleIdentifier];
     
-    NSUserDefaults *padrao = [NSUserDefaults standardUserDefaults];
-
-    NSLog(@"%@", [padrao arrayForKey:@"i"]);
+    [self.window makeKeyAndVisible];
+    
     //[padrao removePersistentDomainForName:dominio];
     /*NSFileManager *fileManager = [ [NSFileManager alloc ] init ] ;
     NSArray *urls = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
@@ -58,8 +61,7 @@
 + (NSURL *) caminhoDoArquivo{
     NSFileManager *manager = [[NSFileManager alloc] init];
     NSURL *path = [[manager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] objectAtIndex:0];
-    [path URLByAppendingPathComponent:@"receitas.archive"];
-    return path;
+    return [path URLByAppendingPathComponent:@"receitas.archive"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

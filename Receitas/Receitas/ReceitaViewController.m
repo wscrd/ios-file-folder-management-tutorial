@@ -9,6 +9,7 @@
 #import "NovaReceitaViewController.h"
 #import "ReceitaViewController.h"
 #import "ReceitaStore.h"
+#import "Receita.h"
 
 
 @interface ReceitaViewController () {
@@ -46,12 +47,10 @@
     // TODO acertar layout e pegar dados da receita atual
     UIButton *novaReceita = [UIButton buttonWithType:UIButtonTypeContactAdd];
     novaReceita.frame = CGRectMake(width*0.8, height*0.08, 50, 50);
-    //UIButton *b =[[UIButton alloc] initWithFrame:CGRectMake(width * 0.80, height*0.08, 50, 50)];
     [novaReceita addTarget:self action:@selector(adicionar:) forControlEvents:UIControlEventTouchUpInside];
-    //[b setBackgroundColor:[UIColor colorWithRed:0.6 green:0.0 blue:0.6 alpha:1.0]];
     [self.view addSubview:novaReceita];
     nome = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width/2, height*.2)];
-    nome.text = @"Pegar nome da receita atual";
+
     nome.textAlignment = NSTextAlignmentCenter;
     nome.font = [UIFont fontWithName:@"Arial" size:10];
     nome.textColor = [UIColor redColor];
@@ -114,6 +113,9 @@
 - (void)update
 {
     // TODO atualizar a view com a receita atual
+    Receita *r = [[ReceitaStore sharedInstance] atual];
+    nome.text = r.nome;
+    
 }
 
 -(IBAction) adicionar: (id) sender {

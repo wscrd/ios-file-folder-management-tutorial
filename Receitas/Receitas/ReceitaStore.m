@@ -14,17 +14,9 @@
     NSInteger current;
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
-    if (self) {
-        receitas = (NSMutableArray *)[aDecoder decodeObjectForKey:@"receitas"];
-    }
-    return self;
-}
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:(NSArray *)receitas forKey:@"receitas"];
-}
+
+
 + (ReceitaStore *)sharedInstance
 {
     static ReceitaStore *sharedInstance = nil;
@@ -37,7 +29,7 @@
 -(id)initPrivado {
     self = [super init];
     if(self) {
-        // TODO recuperar as receitas do arquivo
+        
         NSURL *caminho = [MackenzieAppDelegate caminhoDoArquivo];
         receitas = [NSKeyedUnarchiver unarchiveObjectWithFile:[caminho path]];
         if (!receitas) {
@@ -48,6 +40,14 @@
     return self;
 }
 
+-(Receita *)atual {
+    if (current < 0 || current >= [receitas count]) {
+        return nil;
+    }
+    else {
+        return [receitas objectAtIndex:current];
+    }
+}
 
 -(Receita*)previous {
     if(current == 0) {
@@ -55,7 +55,7 @@
     } else {
         current--;
     }
-    return [receitas objectAtIndex:current];
+    return [self atual];
 }
 
 -(Receita*)next {
@@ -64,7 +64,7 @@
     } else {
         current++;
     }
-    return [receitas objectAtIndex:current];
+    return [self atual];
 }
 
 -(void)addReceita:(Receita*)novaReceita {
