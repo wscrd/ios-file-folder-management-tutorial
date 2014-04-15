@@ -33,6 +33,7 @@
     [textField resignFirstResponder];
     return YES;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,6 +44,7 @@
     _quantidade.delegate = self;
     _unidade.delegate = self;
     _ingrediente.delegate = self;
+    _passos.delegate =self;
     
     // Do any additional setup after loading the view.
     [_botaoSalvar setHidden:YES];
@@ -71,9 +73,12 @@
         && _ingrediente.text.length >0
         && _quantidade.text.length > 0) {
         
-        Ingrediente *aux = [[Ingrediente alloc] initWithNome:_campoNome.text quantidade:[_quantidade.text floatValue] eUnidade:_unidade.text];
+        Ingrediente *aux = [[Ingrediente alloc] initWithNome:_ingrediente.text quantidade:[_quantidade.text floatValue] eUnidade:_unidade.text];
         [igd addObject:aux];
         [_botaoSalvar setHidden:NO];
+        _unidade.text = @"";
+        _quantidade.text = @"";
+        _ingrediente.text = @"";
         
     }
     else {
@@ -87,13 +92,12 @@
 
 - (IBAction)salvar:(id)sender {
     NSLog(@"botao Salvar");
-    [_botaoSalvar setHidden:YES];
-    
-    Receita *r = [[Receita alloc] initWithNome:_campoNome.text passos:@"" eIngredientes:igd];
-    _unidade.text = @"";
-    _quantidade.text = @"";
-    [[ReceitaStore sharedInstance] addReceita:r];
-    _campoNome.text = @"";
+    if (_campoNome.text.length > 0) {
+        [_botaoSalvar setHidden:YES];
+        Receita *r = [[Receita alloc] initWithNome:_campoNome.text passos:_passos.text eIngredientes:igd];
+        [[ReceitaStore sharedInstance] addReceita:r];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     
 }
 @end
