@@ -16,9 +16,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(NSTemporaryDirectory());
-    //Receita *r = [[Receita alloc] init];
-    //r.nome = @"Bolo de abacaxi";
-    //[[ReceitaStore sharedInstance] addReceita:r];
     ReceitaViewController *viewController = [[ReceitaViewController alloc]
                                             initWithNibName:nil
                                             bundle:nil];
@@ -32,28 +29,7 @@
     
     [self.window makeKeyAndVisible];
     
-    //[padrao removePersistentDomainForName:dominio];
-    /*NSFileManager *fileManager = [ [NSFileManager alloc ] init ] ;
-    NSArray *urls = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    for(int i = 0; i < [ urls count ] ; i++ ) {
-        NSLog(@"Path => %@\n", urls[i]);
-    }
     
-    NSString *caminho = [NSTemporaryDirectory() stringByAppendingString:@"MeuArquivo.txt"];
-    NSArray *nomes = @[@"Paz", @"Amor"];
-
-    BOOL resultado =  [nomes writeToFile:caminho atomically:YES];
-    
-    NSArray *leitura = [[NSArray alloc] initWithContentsOfFile:caminho];
-    if([leitura count] != [nomes count]) {
-        NSLog(@"Erro de Leitura");
-    }
-    if (!resultado) {
-        NSLog(@"Erro de escrita");
-    }
-    for (NSString *nome in leitura) {
-        NSLog(@"%@", nome);
-    }*/
     
     return YES;
 }
