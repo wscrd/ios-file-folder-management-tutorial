@@ -13,6 +13,9 @@
 #import "ReceitaViewController.h"
 @interface NovaReceitaViewController () {
     NSMutableArray *igd;
+    Receita *atual;
+    UITapGestureRecognizer *tap;
+    CGRect p;
     //Usar NSDictionary para guardar estes vetores
 }
 
@@ -31,21 +34,23 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    return YES;
+    return NO;
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     igd = [[NSMutableArray alloc] init];
 
-
+    p = _passos.frame;
     _campoNome.delegate =self;
     _quantidade.delegate = self;
-    _unidade.delegate = self;
     _ingrediente.delegate = self;
     _passos.delegate =self;
     
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(retiraTeclado)];
+    [self.view addGestureRecognizer:tap];
     // Do any additional setup after loading the view.
     [_botaoSalvar setHidden:YES];
 }
@@ -54,6 +59,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    NSLog(@"string");
+    [_passosTexto setHidden:YES];
+    float largura = p.size.width;
+    float altura = p.size.height;
+    float larguraEspaco = (self.view.frame.size.width - largura)/2;
+    float alturaEspaco = (self.view.frame.size.height - altura)/2;
+    
+    [_passos setFrame:CGRectMake(larguraEspaco, alturaEspaco, largura, altura)];
+    
+    
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    _passos.frame = p;
+    [_passosTexto setHidden:NO];
 }
 
 /*
@@ -67,16 +91,18 @@
 }
 */
 
+- (void) retiraTeclado {
+    [self.view endEditing:YES];
+}
+
 
 - (IBAction)adicionarIngrediente:(id)sender {
     if (_campoNome.text.length > 0
         && _ingrediente.text.length >0
         && _quantidade.text.length > 0) {
-        
-        Ingrediente *aux = [[Ingrediente alloc] initWithNome:_ingrediente.text quantidade:[_quantidade.text floatValue] eUnidade:_unidade.text];
+        Ingrediente *aux = [[Ingrediente alloc] initWithNome:_ingrediente.text quantidade:[_quantidade.text floatValue]];
         [igd addObject:aux];
         [_botaoSalvar setHidden:NO];
-        _unidade.text = @"";
         _quantidade.text = @"";
         _ingrediente.text = @"";
         
@@ -94,8 +120,8 @@
     NSLog(@"botao Salvar");
     if (_campoNome.text.length > 0) {
         [_botaoSalvar setHidden:YES];
-        Receita *r = [[Receita alloc] initWithNome:_campoNome.text passos:_passos.text eIngredientes:igd];
-        [[ReceitaStore sharedInstance] addReceita:r];
+        atual = [[Receita alloc] initWithNome:_campoNome.text passos:_passos.text eIngredientes:igd];
+        [[ReceitaStore sharedInstance] addReceita:atual];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     

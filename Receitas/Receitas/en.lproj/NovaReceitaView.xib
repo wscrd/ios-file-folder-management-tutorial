@@ -10,8 +10,8 @@
                 <outlet property="campoNome" destination="d8O-7X-bd8" id="I3V-Ik-9wn"/>
                 <outlet property="ingrediente" destination="Nv3-9W-YYQ" id="OUx-X7-CLQ"/>
                 <outlet property="passos" destination="v20-q9-dT8" id="BLj-lY-PKU"/>
+                <outlet property="passosTexto" destination="ryV-SB-81n" id="Ehb-Az-fAU"/>
                 <outlet property="quantidade" destination="2hc-6p-cHA" id="sql-AP-40V"/>
-                <outlet property="unidade" destination="Auj-8O-anW" id="2Vy-OP-FON"/>
                 <outlet property="view" destination="iN0-l3-epB" id="jTS-uG-g1A"/>
             </connections>
         </placeholder>
@@ -56,31 +56,19 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="quantidade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7B-8Y-f0Y">
-                    <rect key="frame" x="20" y="152" width="87" height="21"/>
+                    <rect key="frame" x="19" y="157" width="87" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hc-6p-cHA">
-                    <rect key="frame" x="125" y="148" width="54" height="30"/>
+                    <rect key="frame" x="125" y="153" width="54" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Auj-8O-anW">
-                    <rect key="frame" x="125" y="181" width="97" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="unidade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnz-xv-XQl">
-                    <rect key="frame" x="31" y="185" width="62" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-Pf-LOW">
-                    <rect key="frame" x="222" y="148" width="90" height="30"/>
+                    <rect key="frame" x="107" y="186" width="90" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="+ ingrediente">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

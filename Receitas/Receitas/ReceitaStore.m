@@ -41,12 +41,18 @@
 }
 
 -(Receita *)atual {
-    if (current < 0 || current >= [receitas count]) {
+    if ([receitas count] == 0) {
         return nil;
     }
     else {
         return [receitas objectAtIndex:current];
     }
+    //if (current < 0 || current >= [receitas count]) {
+    //    return nil;
+    //}
+    //else {
+    //    return [receitas objectAtIndex:current];
+    //}
 }
 
 -(Receita*)previous {

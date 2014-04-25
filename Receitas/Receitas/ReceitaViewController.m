@@ -48,7 +48,7 @@
     // TODO acertar layout e pegar dados da receita atual
     UIButton *novaReceita = [UIButton buttonWithType:UIButtonTypeContactAdd];
     novaReceita.frame = CGRectMake(width*0.8, height*0.08, 50, 50);
-    [novaReceita addTarget:self action:@selector(adicionar:) forControlEvents:UIControlEventTouchUpInside];
+    [novaReceita addTarget:self action:@selector(adicionar) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:novaReceita];
     nome = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0,self.view.frame.size.width, self.view.frame.size.height/5)];
 
@@ -128,7 +128,7 @@
     nome.text = r.nome;
 }
 
--(IBAction) adicionar: (id) sender {
+-(void) adicionar {
     NSLog(@"Pressionado");
     NovaReceitaViewController *nr = [[NovaReceitaViewController alloc] initWithNibName:@"NovaReceitaView" bundle:[NSBundle mainBundle]];
     [self presentViewController:nr animated:YES completion:nil];

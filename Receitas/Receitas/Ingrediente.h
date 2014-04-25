@@ -8,15 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Ingrediente : NSObject <NSCoding> {
-    float quantidade;
-    NSString *unidade;
-    NSString *nome;
-}
+@interface Ingrediente : NSObject <NSCoding> 
 
 @property NSString *nome;
 @property float quantidade;
-@property NSString *unidade;
 
-- (id)initWithNome:(NSString *) ingrediente quantidade:(float) qte eUnidade:(NSString *) und;
+- (id)initWithNome:(NSString *) ingrediente quantidade:(float) qte ;
 @end
